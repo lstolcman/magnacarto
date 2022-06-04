@@ -9,47 +9,52 @@ jobs:
     steps:
 
 
-      - name: build mapnik cmake
-        shell: bash
-        run: |
-          DEBIAN_FRONTEND=noninteractive
-          BUILD_DEPENDENCIES="libicu-dev \
-            libfreetype6-dev \
-            libharfbuzz-dev \
-            libxml2-dev \
-            libjpeg-dev \
-            libtiff-dev \
-            libwebp-dev \
-            libcairo2-dev \
-            libproj-dev \
-            libgdal-dev \
-            libboost-filesystem-dev \
-            libboost-program-options-dev \
-            libboost-regex-dev \
-            "
+    - name: build mapnik cmake
+      shell: bash
+      run: |
+        DEBIAN_FRONTEND=noninteractive
+        BUILD_DEPENDENCIES="libicu-dev \
+          libfreetype6-dev \
+          libharfbuzz-dev \
+          libxml2-dev \
+          libjpeg-dev \
+          libtiff-dev \
+          libwebp-dev \
+          libcairo2-dev \
+          libproj-dev \
+          libgdal-dev \
+          libboost-filesystem-dev \
+          libboost-program-options-dev \
+          libboost-regex-dev \
+          "
 
-          sudo apt-get install -y --no-install-recommends \
-                cmake \
-                ninja-build \
-                build-essential \
-                $BUILD_DEPENDENCIES \
-            && rm -rf /var/lib/apt/lists/*
+        sudo apt-get install -y --no-install-recommends \
+              cmake \
+              ninja-build \
+              build-essential \
+              $BUILD_DEPENDENCIES \
+          && rm -rf /var/lib/apt/lists/*
 
-          git clone https://github.com/mapnik/mapnik.git
-          cd mapnik
-          git checkout $MAPNIK_VERSION
-          git submodule update --init
+        git clone https://github.com/mapnik/mapnik.git
+        cd mapnik
+        git checkout $MAPNIK_VERSION
+        git submodule update --init
 
-          sudo cmake --preset linux-gcc-release -DBUILD_DEMO_VIEWER=OFF -DBUILD_TESTING=OFF -DBUILD_DEMO_CPP=OFF -DBUILD_BENCHMARK=OFF \
-          && cmake --build --preset linux-gcc-release \
-          && cmake --build --preset linux-gcc-release --target install \
-          # && cd / \
-          # && echo "/usr/local/lib" > /etc/ld.so.conf.d/mapnik.conf \
-          # && ldconfig \
-          # && rm -rf /app
+        sudo cmake --preset linux-gcc-release -DBUILD_DEMO_VIEWER=OFF -DBUILD_TESTING=OFF -DBUILD_DEMO_CPP=OFF -DBUILD_BENCHMARK=OFF \
+        && cmake --build --preset linux-gcc-release \
+        && cmake --build --preset linux-gcc-release --target install \
+        # && cd / \
+        # && echo "/usr/local/lib" > /etc/ld.so.conf.d/mapnik.conf \
+        # && ldconfig \
+        # && rm -rf /app
 
 
-    # - name: build mapnik
+
+
+
+
+
+    # - name: build mapnik scons
     #   shell: bash
     #   run: |
     #     export BUILD_DEPENDENCIES="build-essential \
