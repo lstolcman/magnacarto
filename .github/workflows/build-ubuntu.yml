@@ -47,8 +47,9 @@ jobs:
             libharfbuzz-gobject0 \
             libharfbuzz-icu0 \
             libharfbuzz0b \
-            libicu67 \
-            libjpeg62-turbo \
+            libicu70 \
+            libjpeg-turbo8 \
+            libjpeg62 \
             libpq5 \
             libproj22 \
             librasterlite2-1 \
