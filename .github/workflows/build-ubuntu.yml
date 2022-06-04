@@ -50,15 +50,14 @@ jobs:
             libicu67 \
             libjpeg62-turbo \
             libpq5 \
-            libproj19 \
+            libproj22 \
             librasterlite2-1 \
             libsqlite3-0 \
             libtiff5 \
             libtiffxx5 \
-            libwebp6  \
+            libwebp7  \
             libwebpdemux2 \
-            libwebpmux3 \
-            python"
+            libwebpmux3"
 
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends $BUILD_DEPENDENCIES $DEPENDENCIES
