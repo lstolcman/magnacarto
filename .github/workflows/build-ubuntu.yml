@@ -34,8 +34,7 @@ jobs:
               cmake \
               ninja-build \
               build-essential \
-              $BUILD_DEPENDENCIES \
-          && rm -rf /var/lib/apt/lists/*
+              $BUILD_DEPENDENCIES
 
         git clone https://github.com/mapnik/mapnik.git
         cd mapnik
