@@ -73,8 +73,8 @@ RUN git clone https://github.com/mapnik/mapnik.git \
     && git submodule update --init \
     && python scons/scons.py INPUT_PLUGINS='all'
 
-RUN JOBS=4 make
-RUN JOBS=4 make install
+RUN cd mapnik && JOBS=4 make
+RUN cd mapnik && JOBS=4 make install
 RUN cd - \
     && rm -r mapnik \
     && apt-get autoremove -y --purge $BUILD_DEPENDENCIES \
