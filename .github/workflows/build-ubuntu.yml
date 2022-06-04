@@ -37,10 +37,10 @@ jobs:
           libwebp-dev"
 
         export DEPENDENCIES="libboost-filesystem-dev \
-            libboost-program-options1.74.0 \
-            libboost-regex1.74.0 \
-            libboost-thread1.74.0 \
-            libboost-system1.74.0 \
+            libboost-program-options-dev \
+            libboost-regex-dev \
+            libboost-thread-dev \
+            libboost-system-dev \
             libcairo2 \
             libfreetype6 \
             libgdal28 \
