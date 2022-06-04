@@ -8,17 +8,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
 
-    - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
 
-    - name: Build
-      run: bash ./crosscompile.sh
-
-    - name: b
+    - name: build mapnik
       shell: bash
       run: |
         export BUILD_DEPENDENCIES="build-essential \
@@ -68,8 +60,8 @@ jobs:
             libwebpmux3 \
             python"
 
-        apt-get update
-        apt-get install -y --no-install-recommends $BUILD_DEPENDENCIES $DEPENDENCIES
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends $BUILD_DEPENDENCIES $DEPENDENCIES
         git clone https://github.com/mapnik/mapnik.git
         cd mapnik
         git checkout $MAPNIK_VERSION
@@ -80,6 +72,19 @@ jobs:
         make install
 
         cd ..
+
+
+
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Build
+      run: |
+        # bash ./crosscompile.sh
         go get -u github.com/omniscale/magnacarto
         make install
 
