@@ -59,6 +59,8 @@ jobs:
             libwebp7  \
             libwebpdemux2 \
             libwebpmux3"
+        # python3
+
 
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends $BUILD_DEPENDENCIES $DEPENDENCIES
@@ -68,8 +70,8 @@ jobs:
         git submodule update --init
         python scons/scons.py INPUT_PLUGINS='all'
         
-        make
-        make install
+        JOBS=2 make
+        JOBS=2 make install
 
         cd ..
 
