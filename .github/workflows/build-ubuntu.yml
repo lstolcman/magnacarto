@@ -43,7 +43,7 @@ jobs:
             libboost-system1.74.0 \
             libcairo2 \
             libfreetype6 \
-            libgdal28 \
+            libgdal30 \
             libharfbuzz-gobject0 \
             libharfbuzz-icu0 \
             libharfbuzz0b \
